@@ -1,20 +1,22 @@
 #include <iostream>
+using std::cout;
+using std::cin;
 
-int gcd_naive(int a, int b) {
-  int current_gcd = 1;
-  for (int d = 2; d <= a && d <= b; d++) {
-    if (a % d == 0 && b % d == 0) {
-      if (d > current_gcd) {
-        current_gcd = d;
-      }
-    }
-  }
-  return current_gcd;
+long int gcd(long int divisor , long int dividend){
+    while(divisor != 0){
+			long int remainder = dividend % divisor;
+			dividend = divisor;
+			divisor = remainder;
+		}
+    return dividend;
 }
 
 int main() {
-  int a, b;
-  std::cin >> a >> b;
-  std::cout << gcd_naive(a, b) << std::endl;
-  return 0;
-}
+    long int a,b;
+    cin >> a >> b;
+		long int dividend = a >= b ? a : b;
+		long int divisor = a <= b ? a : b;
+    long int result = gcd(divisor ,dividend);
+		cout << result ;
+    return 0;
+		}

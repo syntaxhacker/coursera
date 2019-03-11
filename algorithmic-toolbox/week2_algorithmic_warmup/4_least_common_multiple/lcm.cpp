@@ -1,16 +1,23 @@
 #include <iostream>
+using std::cout;
+using std::cin;
 
-long long lcm_naive(int a, int b) {
-  for (long l = 1; l <= (long long) a * b; ++l)
-    if (l % a == 0 && l % b == 0)
-      return l;
-
-  return (long long) a * b;
+long int gcd(long int divisor , long int dividend){
+    while(divisor != 0){
+			long int remainder = dividend % divisor;
+			dividend = divisor;
+			divisor = remainder;
+		}
+    return dividend;
 }
 
 int main() {
-  int a, b;
-  std::cin >> a >> b;
-  std::cout << lcm_naive(a, b) << std::endl;
-  return 0;
-}
+    long int a,b;
+    cin >> a >> b;
+		long int dividend = a >= b ? a : b;
+		long int divisor = a <= b ? a : b;
+    long int gcdResult = gcd(divisor ,dividend);
+		long int lcmResult = ( dividend * divisor ) / gcdResult;
+		cout << lcmResult ;
+    return 0;
+		}
